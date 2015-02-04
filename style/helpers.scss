@@ -71,6 +71,16 @@
   }
 }
 
+<<<<<<< HEAD
+=======
+// Appearance
+@mixin appearance($args...) {
+  -webkit-appearance: $args;
+  -moz-appearance: $args;
+  appearance: $args;
+}
+
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
 // Clearfix
 @mixin clearfix {
   &:after {

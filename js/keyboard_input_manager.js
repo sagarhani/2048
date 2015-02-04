@@ -55,6 +55,12 @@ KeyboardInputManager.prototype.listen = function () {
                     event.shiftKey;
     var mapped    = map[event.which];
 
+<<<<<<< HEAD
+=======
+    // Ignore the event if it's happening in a text field
+    if (self.targetIsInput(event)) return;
+
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
     if (!modifiers) {
       if (mapped !== undefined) {
         event.preventDefault();
@@ -79,8 +85,14 @@ KeyboardInputManager.prototype.listen = function () {
 
   gameContainer.addEventListener(this.eventTouchstart, function (event) {
     if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
+<<<<<<< HEAD
         event.targetTouches > 1) {
       return; // Ignore if touching with more than 1 finger
+=======
+        event.targetTouches > 1 ||
+        self.targetIsInput(event)) {
+      return; // Ignore if touching with more than 1 finger or touching input
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
     }
 
     if (window.navigator.msPointerEnabled) {
@@ -100,8 +112,14 @@ KeyboardInputManager.prototype.listen = function () {
 
   gameContainer.addEventListener(this.eventTouchend, function (event) {
     if ((!window.navigator.msPointerEnabled && event.touches.length > 0) ||
+<<<<<<< HEAD
         event.targetTouches > 0) {
       return; // Ignore if still touching with one or more fingers
+=======
+        event.targetTouches > 0 ||
+        self.targetIsInput(event)) {
+      return; // Ignore if still touching with one or more fingers or input
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
     }
 
     var touchEndClientX, touchEndClientY;
@@ -142,3 +160,10 @@ KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
   button.addEventListener("click", fn.bind(this));
   button.addEventListener(this.eventTouchend, fn.bind(this));
 };
+<<<<<<< HEAD
+=======
+
+KeyboardInputManager.prototype.targetIsInput = function (event) {
+  return event.target.tagName.toLowerCase() === "input";
+};
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
