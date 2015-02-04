@@ -3,6 +3,13 @@ function HTMLActuator() {
   this.scoreContainer   = document.querySelector(".score-container");
   this.bestContainer    = document.querySelector(".best-container");
   this.messageContainer = document.querySelector(".game-message");
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  this.sharingContainer = document.querySelector(".score-sharing");
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
+>>>>>>> 11e226b056c274ba3f9025b16fa8067b1eb2f13d
 
   this.score = 0;
 }
@@ -37,6 +44,16 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 
 // Continues the game (both restart and keep playing)
 HTMLActuator.prototype.continueGame = function () {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  if (typeof ga !== "undefined") {
+    ga("send", "event", "game", "restart");
+  }
+
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
+>>>>>>> 11e226b056c274ba3f9025b16fa8067b1eb2f13d
   this.clearMessage();
 };
 
@@ -128,8 +145,26 @@ HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
   var message = won ? "You win!" : "Game over!";
 
+<<<<<<< HEAD
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
+=======
+<<<<<<< HEAD
+  this.messageContainer.classList.add(type);
+  this.messageContainer.getElementsByTagName("p")[0].textContent = message;
+=======
+  if (typeof ga !== "undefined") {
+    ga("send", "event", "game", "end", type, this.score);
+  }
+
+  this.messageContainer.classList.add(type);
+  this.messageContainer.getElementsByTagName("p")[0].textContent = message;
+
+  this.clearContainer(this.sharingContainer);
+  this.sharingContainer.appendChild(this.scoreTweetButton());
+  twttr.widgets.load();
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
+>>>>>>> 11e226b056c274ba3f9025b16fa8067b1eb2f13d
 };
 
 HTMLActuator.prototype.clearMessage = function () {
@@ -137,3 +172,25 @@ HTMLActuator.prototype.clearMessage = function () {
   this.messageContainer.classList.remove("game-won");
   this.messageContainer.classList.remove("game-over");
 };
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+HTMLActuator.prototype.scoreTweetButton = function () {
+  var tweet = document.createElement("a");
+  tweet.classList.add("twitter-share-button");
+  tweet.setAttribute("href", "https://twitter.com/share");
+  tweet.setAttribute("data-via", "gabrielecirulli");
+  tweet.setAttribute("data-url", "http://git.io/2048");
+  tweet.setAttribute("data-counturl", "http://gabrielecirulli.github.io/2048/");
+  tweet.textContent = "Tweet";
+
+  var text = "I scored " + this.score + " points at 2048, a game where you " +
+             "join numbers to score high! #2048game";
+  tweet.setAttribute("data-text", text);
+
+  return tweet;
+};
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
+>>>>>>> 11e226b056c274ba3f9025b16fa8067b1eb2f13d

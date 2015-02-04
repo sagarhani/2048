@@ -55,6 +55,15 @@ KeyboardInputManager.prototype.listen = function () {
                     event.shiftKey;
     var mapped    = map[event.which];
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    // Ignore the event if it's happening in a text field
+    if (self.targetIsInput(event)) return;
+
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
+>>>>>>> 11e226b056c274ba3f9025b16fa8067b1eb2f13d
     if (!modifiers) {
       if (mapped !== undefined) {
         event.preventDefault();
@@ -79,8 +88,19 @@ KeyboardInputManager.prototype.listen = function () {
 
   gameContainer.addEventListener(this.eventTouchstart, function (event) {
     if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
+<<<<<<< HEAD
         event.targetTouches > 1) {
       return; // Ignore if touching with more than 1 finger
+=======
+<<<<<<< HEAD
+        event.targetTouches > 1) {
+      return; // Ignore if touching with more than 1 finger
+=======
+        event.targetTouches > 1 ||
+        self.targetIsInput(event)) {
+      return; // Ignore if touching with more than 1 finger or touching input
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
+>>>>>>> 11e226b056c274ba3f9025b16fa8067b1eb2f13d
     }
 
     if (window.navigator.msPointerEnabled) {
@@ -100,8 +120,19 @@ KeyboardInputManager.prototype.listen = function () {
 
   gameContainer.addEventListener(this.eventTouchend, function (event) {
     if ((!window.navigator.msPointerEnabled && event.touches.length > 0) ||
+<<<<<<< HEAD
         event.targetTouches > 0) {
       return; // Ignore if still touching with one or more fingers
+=======
+<<<<<<< HEAD
+        event.targetTouches > 0) {
+      return; // Ignore if still touching with one or more fingers
+=======
+        event.targetTouches > 0 ||
+        self.targetIsInput(event)) {
+      return; // Ignore if still touching with one or more fingers or input
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
+>>>>>>> 11e226b056c274ba3f9025b16fa8067b1eb2f13d
     }
 
     var touchEndClientX, touchEndClientY;
@@ -142,3 +173,13 @@ KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
   button.addEventListener("click", fn.bind(this));
   button.addEventListener(this.eventTouchend, fn.bind(this));
 };
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+KeyboardInputManager.prototype.targetIsInput = function (event) {
+  return event.target.tagName.toLowerCase() === "input";
+};
+>>>>>>> 0fc435451731c83d13cef40ebb46562b50a8efc0
+>>>>>>> 11e226b056c274ba3f9025b16fa8067b1eb2f13d
